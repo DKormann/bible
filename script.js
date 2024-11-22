@@ -63,26 +63,27 @@ window.addEventListener('keydown', e => {
 
 // for mobile
 
-let touchstartX = 0;
-let touchendX = 0;
+let touchstart = {x: 0, y: 0};
 
 content.addEventListener('touchstart', e => {
-  touchstartX = e.changedTouches[0].screenX;
+  touchstart = {x: e.changedTouches[0].screenX, y: e.changedTouches[0].screenY};
 }
 , false);
 
 content.addEventListener('touchend', e => {
-  touchendX = e.changedTouches[0].screenX;
-  handleGesture();
+  handleGesture({x: e.changedTouches[0].screenX, y: e.changedTouches[0].screenY});
 }
 , false);
 
-function handleGesture() {
-  if (touchendX < touchstartX - 50) {
-    open_chapter(current_chapter + 1);
-  }
+function handleGesture(end) {
+  let dx = end.x - touchstart.x;
+  let dy = end.y - touchstart.y;
 
-  if (touchendX > touchstartX + 50) {
-    open_chapter(current_chapter - 1);
+  if (Math.abs(dx) > Math.abs(dy)){
+    if (dx > 0){
+      open_chapter(current_chapter - 1);
+    } else {
+      open_chapter(current_chapter + 1);
+    }
   }
 }
