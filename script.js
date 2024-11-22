@@ -78,11 +78,11 @@ content.addEventListener('touchend', e => {
 , false);
 
 function handleGesture() {
-  if (touchendX < touchstartX) {
+  if (touchendX < touchstartX - 50) {
     open_chapter(current_chapter + 1);
   }
 
-  if (touchendX > touchstartX) {
+  if (touchendX > touchstartX + 50) {
     open_chapter(current_chapter - 1);
   }
 }
