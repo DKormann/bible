@@ -61,3 +61,28 @@ window.addEventListener('keydown', e => {
   }
 })
 
+// for mobile
+
+let touchstartX = 0;
+let touchendX = 0;
+
+content.addEventListener('touchstart', e => {
+  touchstartX = e.changedTouches[0].screenX;
+}
+, false);
+
+content.addEventListener('touchend', e => {
+  touchendX = e.changedTouches[0].screenX;
+  handleGesture();
+}
+, false);
+
+function handleGesture() {
+  if (touchendX < touchstartX) {
+    open_chapter(current_chapter + 1);
+  }
+
+  if (touchendX > touchstartX) {
+    open_chapter(current_chapter - 1);
+  }
+}
