@@ -19,11 +19,9 @@ setup();
 
 function setup(){
   content.innerHTML = '';
-
-  fetch ('bible').then(response => {
+  fetch('bible/chapter_list').then(response => {
     response.text().then(text => {
-      links = text.match(/<a href=(.*?)>/g);
-      links = links.map(link => link.slice(11, -2));
+      links = text.split('\n');
       links.forEach((l, i ) => {
         let p = document.createElement('p');
         p.style.cursor = 'pointer';
@@ -37,7 +35,7 @@ function setup(){
         open_chapter(current_chapter);
       }
     })
-  });
+  })
 
 }
 
