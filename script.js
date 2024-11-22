@@ -67,13 +67,17 @@ window.addEventListener('keydown', e => {
 // for mobile
 
 let touchstart = {x: 0, y: 0};
+let touchtime = 0;
 
 content.addEventListener('touchstart', e => {
   touchstart = {x: e.changedTouches[0].screenX, y: e.changedTouches[0].screenY};
+  touchtime = new Date().getTime();
 }
 , false);
 
 content.addEventListener('touchend', e => {
+  let delta = new Date().getTime() - touchtime;
+  if (delta < 500) return;
   handleGesture({x: e.changedTouches[0].screenX, y: e.changedTouches[0].screenY});
 }
 , false);
