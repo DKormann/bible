@@ -47,6 +47,9 @@ function open_chapter(chapidx){
     response.text().then(text => content.innerHTML = text);
   });
   history.pushState(null, '', '?chapter='+chapidx);
+
+  window.scrollTo(window.scrollX, 0);
+
 }
 
 window.onpopstate = function(event) {
