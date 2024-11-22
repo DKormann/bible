@@ -77,7 +77,7 @@ content.addEventListener('touchstart', e => {
 
 content.addEventListener('touchend', e => {
   let delta = new Date().getTime() - touchtime;
-  if (delta < 500) return;
+  if (delta < 50) return;
   handleGesture({x: e.changedTouches[0].screenX, y: e.changedTouches[0].screenY});
 }
 , false);
@@ -85,6 +85,8 @@ content.addEventListener('touchend', e => {
 function handleGesture(end) {
   let dx = end.x - touchstart.x;
   let dy = end.y - touchstart.y;
+  console.log(dx, dy);
+  
 
   if (Math.abs(dx) > Math.abs(dy)){
     if (dx > 0){
