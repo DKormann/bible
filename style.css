@@ -14,3 +14,9 @@ body{
     --bg:black;
   }
 }
+
+
+#content{
+  max-width: 20em;
+  margin: auto;
+}
