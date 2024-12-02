@@ -87,8 +87,7 @@ function handleGesture(end) {
   let dy = end.y - touchstart.y;
   console.log(dx, dy);
   
-
-  if (Math.abs(dx) > Math.abs(dy)){
+  if (Math.abs(dx) > Math.max(Math.abs(dy), window.innerWidth/2)){
     if (dx > 0){
       open_chapter(current_chapter - 1);
     } else {
